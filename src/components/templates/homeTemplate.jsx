@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Buscador } from "../moleculas/buscador";
 import { Header } from "../organismos/header";
 
 export function HomeTemplate() {

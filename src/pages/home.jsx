@@ -10,9 +10,10 @@ export function Home() {
     queryFn: mostrarPokemons,
   });
 
-  const {} = useQuery({
+  useQuery({
     queryKey: ["buscar pokemon", buscador],
     queryFn: () => buscarPokemon(buscador),
+    enabled: false,
   });
 
   return <HomeTemplate />;
