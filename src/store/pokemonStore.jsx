@@ -12,6 +12,22 @@ export const usePokemonStore = create((set) => ({
   buscador: "",
   setBuscador: (p) => set({ buscador: p }),
   pokemonBuscado: [],
+  mostrarDetallesPokemon: async(url) => {
+    const response = await fetch(url);
+    const data = await response.json();
+    return {
+      tipo: data.types[0].type.name,
+      imagen: data.sprites.front_default,
+      nombre: data.name,
+      altura: data.stats[0].base_stat,
+      peso: data.stats[1].base_stat,
+      estatura: data.stats[2].base_stat,
+      raza: data.species.name,
+      generacion: data.species.generation.name,
+      color: data.color.name,
+      id: data.id,
+    }
+  },
   buscarPokemon: async (buscador) => {
     const apiURL = `https://pokeapi.co/api/v2/pokemon/${buscador.toLowerCase()}`;
     try {

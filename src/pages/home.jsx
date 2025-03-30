@@ -13,7 +13,7 @@ export function Home() {
   useQuery({
     queryKey: ["buscar pokemon", buscador],
     queryFn: () => buscarPokemon(buscador),
-    enabled: false,
+    enabled: !!buscador,
   });
 
   return <HomeTemplate />;

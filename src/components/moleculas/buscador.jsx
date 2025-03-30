@@ -1,11 +1,9 @@
 import styled from "styled-components";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { usePokemonStore } from "../../store/pokemonStore";
-import { useQueryClient } from "@tanstack/react-query";
 
 export function Buscador() {
   const { setBuscador } = usePokemonStore();
-  const queryClient = useQueryClient();
 
   const buscar = (e) => {
     setBuscador(e.target.value);
@@ -17,9 +15,8 @@ export function Buscador() {
         <Icon
           className="icono"
           icon="ic:twotone-search"
-          onClick={() => queryClient.invalidateQueries("buscar pokemon")}
         />
-        <input placeholder="...buscar" onChange={buscar} />
+        <input placeholder="Buscar pokemon..." onChange={buscar} />
       </section>
     </Container>
   );
