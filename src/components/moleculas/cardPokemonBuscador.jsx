@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { usePokemonStore } from "../../store/pokemonStore";
 import { Icon } from "@iconify/react/dist/iconify.js";
-export function CardPokemonBuscador({ item, color = "#1ca533" }) {
+export function CardPokemonBuscador({ item }) {
   const { pokemonBuscado } = usePokemonStore();
   if (
     pokemonBuscado === null ||
@@ -9,21 +9,13 @@ export function CardPokemonBuscador({ item, color = "#1ca533" }) {
   )
     return <Icon icon="fluent-emoji:avocado" />;
   return (
-    <Container color={color}>
-      <Number color={color}>#001</Number>
+    <Container color={pokemonBuscado.color}>
+      <Number color={pokemonBuscado.color}>#{pokemonBuscado.numero}</Number>
       <ImageWrapper>
-        <img
-          src={
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png"
-          }
-        />
+        <img src={pokemonBuscado.imageUrl} />
       </ImageWrapper>
-      <Name>Nombre</Name>
-      <SmallImage
-        src={
-          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png"
-        }
-      />
+      <Name>{pokemonBuscado.name}</Name>
+      <SmallImage src={pokemonBuscado.animacion} />
     </Container>
   );
 }
